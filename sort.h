@@ -1,14 +1,47 @@
 
+// CODE FOR SELECTION SORT
+int recursion = 0;
+
+int selection(int a[], int size)
+{
+    int min = recursion, flag = 0;
+
+    for (int i = min + 1; i < size; i++)
+    {
+        if (a[min] >= a[i])
+        {
+            min = i;
+            flag = 1;
+        }
+    }
+
+    if (flag == 1)
+    {
+        a[recursion] += a[min];
+        a[min] = a[recursion] - a[min];
+        a[recursion] = a[recursion] - a[min];
+    }
+    if (recursion < size)
+    {
+        recursion++;
+        selection(a, size);
+    }
+    else
+    {
+        recursion = 0;
+    }
+}
+
 // CODE FOR INSERTION SORT
 
-int insertion(int a[], int size, int recursion /*pass init 0*/)
+int insertion(int a[], int size)
 {
     for (int i = recursion; i >= 0; i--)
     {
         if (a[i] > a[i + 1])
         {
             a[i] += a[i + 1];
-            a[i+1] = a[i] - a[i + 1];
+            a[i + 1] = a[i] - a[i + 1];
             a[i] = a[i] - a[i + 1];
         }
     }
@@ -16,7 +49,11 @@ int insertion(int a[], int size, int recursion /*pass init 0*/)
     if (size > 0)
     {
         recursion++;
-        insertion(a, size, recursion);
+        insertion(a, size);
+    }
+    else
+    {
+        recursion = 0;
     }
 }
 
