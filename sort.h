@@ -1,4 +1,34 @@
 
+// CODE FOR COUNT SORT1
+
+int count(int a[],int size)
+{
+    int max = a[0];
+    for(int i = 0 ; i<size; i++)
+    {
+        if(a[i]>=max)
+        {
+            max = a[i];
+        }
+    }
+
+    int c[max];
+    for(int i = 0 ; i<size; i++)
+    {
+        c[a[i]] += 1;
+    }
+
+    int j = 0;
+    for(int i = 0 ; i<=max; i++)
+    {
+        while(c[i]>0){
+            a[j] = i;
+            j++;
+            c[i]--;
+        }
+    }
+}
+
 // CODE FOR MERGE SORT1
 
 int merge(int a[],int size)
