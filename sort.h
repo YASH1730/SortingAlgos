@@ -1,4 +1,52 @@
 
+// CODE FOR MERGE SORT1
+
+int merge(int a[],int size)
+{
+    int m,n,b[size];
+    for(int i = 0;i<size;i++)
+    {
+        if(a[i]>a[i+1])
+        {
+            n = i;
+            m = i+1;
+            break;
+        }
+    }
+    int i = 0,j = m,k = 0;
+    while(i<=n && j<size)
+    {
+        if(a[i]<a[j])
+        {
+            b[k] = a[i];
+            k++;
+            i++;
+        }
+        else
+        {
+            b[k] = a[j];
+            k++;
+            j++;
+        }
+    }
+    while(j<size)
+    {
+        b[k] = a[j];
+            k++;
+            j++;
+    }
+    while(i<=n)
+    {
+        b[k] = a[i];
+            k++;
+            i++;
+    }
+    for(int i = 0 ; i<size ; i++)
+    {
+        a[i] = b[i];
+    }
+}
+
 // CODE FOR SELECTION SORT
 int recursion = 0;
 
