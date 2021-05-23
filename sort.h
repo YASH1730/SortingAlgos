@@ -1,3 +1,4 @@
+int recursion = 0; // global var
 
 // CODE FOR COUNT SORT1
 
@@ -73,12 +74,12 @@ int merge(int a[],int size)
     }
     for(int i = 0 ; i<size ; i++)
     {
+        printf("{%d}\t", b[i]);
         a[i] = b[i];
     }
 }
 
-// CODE FOR SELECTION SORT
-int recursion = 0;
+// CODE FOR SELECTION SORT1
 
 int selection(int a[], int size)
 {
@@ -137,7 +138,8 @@ int insertion(int a[], int size)
 
 // CODE FOR BUBBLE SORT
 
-int bubble(int a[],int pass)
+int bubble(int a[], int pass)
+
 {
     int j;
     for (int i = 0; i < pass; i++)
@@ -159,10 +161,64 @@ int bubble(int a[],int pass)
             pass -= 1;
             if (pass > 0)
             {
-                return sort(a, pass);
+                return bubble(a, pass);
             }
             else
                 break;
         }
     }
 }
+
+// CODE FOR QUICK SORT
+
+int swap(int a[],int x,int y)
+{
+    a[x]+=a[y];
+    a[y] = a[x] - a[y];
+    a[x] = a[x] - a[y];
+}
+
+int partition(int A[], int low, int high)
+{
+    int pivot = A[low];
+    int i = low + 1;
+    int j = high;
+    int temp;
+
+    do
+    {
+        while (A[i] <= pivot)
+        {
+            i++;
+        }
+
+        while (A[j] > pivot)
+        {
+            j--;
+        }
+
+        if (i < j)
+        {
+            swap(A,i,j);
+        }
+    } while (i < j);
+
+   
+    temp = A[low];
+    A[low] = A[j];
+    A[j] = temp;
+    return j;
+}
+
+int quick(int a[],int low,int high)
+{
+    if(low<high)
+    {
+        int pivot = partition(a,low,high);
+        quick(a,low,pivot-1);
+        quick(a,pivot+1,high);
+    }
+}
+
+
+
